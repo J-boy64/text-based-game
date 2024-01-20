@@ -1,0 +1,112 @@
+#main.py
+#Jesse Elliott | Main game
+#This code will run the text based game for the player to pick their route
+
+from place import Place #Brings in the place class
+from character import Character
+
+a = Place("Enterence") #labals each of the rooms
+b = Place("Ballroom")
+c = Place("Bedroom")
+d = Place("Kitchen")
+e = Place("Hallway")
+k = a #very im portant variable down the line
+
+j = input("Which character will you chose? Mr. Knight, Mr. Body or Mr. Gus? ")
+
+run = True #continuasly acts for the player for them to play
+while run:
+    if j == "Mr. Knight":
+        print("Mr. Knight")
+    elif j == "Mr. Body":
+        print("Mr. Body")
+    elif j == "Mr. Gus":
+        print("Mr. Gus")
+    else:
+        print("")
+        
+    l = input("Which way do you want to go?   ") #asks the player which way they want to go
+    if l == 'up': #controls upward movement
+        if k == a:
+            k = b
+        elif k == b:
+            print("you can't go that way")
+        elif k == c:
+            k = e
+        elif k == d:
+            k = b
+        elif k == e:
+            print("you win")
+    elif l == 'left': #controls sideways movement to the left
+        if k == a:
+            k = c
+        elif k == b:
+            k = e
+        elif k == c:
+            print("you can't go that way")
+        elif k == d:
+            k = b
+        elif k == e:
+            print("you can't go that way")
+    elif l == 'right':#controls sideways movement to the right
+        if k == a:
+            print("you can't go that way")
+        elif k == b:
+            k = d
+        elif k == c:
+            k = a
+        elif k == d:
+            print("you can't go that way")
+        elif k == e:
+            k = b
+    elif l == 'down': #controls downward movement
+        if k == a:
+            print("you can't go that way")
+        elif k == b:
+            k = a
+        elif k == c:
+            print("you can't go that way")
+        elif k == d:
+            print("you can't go that way")
+        elif k == e:
+            k = c
+    else: #makes sure that the player moves in an actual direction
+        print("that's not a direction")
+        
+    k.printroom() #prints room that player is in
+------------------------------------------------------------------------------------------------------------------------------
+#place.py
+#Jesse Elliott | Place Class
+#This code souly existed to help the main game run by listing off the rooms
+
+class Place: #the class in question
+    def __init__(self, tile):#this activates the class
+        self.room = tile
+
+    def printroom(self):#this part prints everything
+        print("You are now in the " + self.room + ".")
+     #here is a rough sketchn of the map   
+'''|___________________|_________|
+   |      |            |         |
+   | end  |            |         |
+   |      |            |         |
+   |--  --|            |         |
+   |      |            |         |
+   |      |            |         |
+   |                             |
+   |      |                      |
+   |      |                      |
+   |--  --|            |         |
+   |      |----    ----|         |
+   |      |            |         |
+   |      |            |         |
+   |                   |         |
+   |      |    start   |         |
+   |______|____________|_________|'''
+--------------------------------------------------------------------------------------------------------------------------------
+#character
+#Jesse Elliott | Character Class
+#This code souly existed to help the main game run by listing off the names of playable characters
+
+class Character(): #this is the character class
+    pass
